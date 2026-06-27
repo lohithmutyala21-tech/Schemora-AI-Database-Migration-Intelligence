@@ -2,11 +2,6 @@
 
 import { useMemo } from "react"
 
-const KEYWORDS =
-  /\b(CREATE|TABLE|TRIGGER|INDEX|PRIMARY|KEY|FOREIGN|REFERENCES|NOT|NULL|DEFAULT|UNIQUE|CHECK|AFTER|BEFORE|INSERT|UPDATE|DELETE|ON|FOR|EACH|ROW|EXECUTE|FUNCTION|OR|AND|SELECT|FROM|WHERE|JOIN|CONSTRAINT|ALTER|ADD)\b/gi
-const TYPES =
-  /\b(BIGSERIAL|SERIAL|BIGINT|INTEGER|INT|VARCHAR|TEXT|TIMESTAMPTZ|TIMESTAMP|BOOLEAN|NUMERIC|DECIMAL|DATE|UUID|JSONB|JSON)\b/gi
-
 function escapeHtml(s: string) {
   return s
     .replace(/&/g, "&amp;")
@@ -14,32 +9,37 @@ function escapeHtml(s: string) {
     .replace(/>/g, "&gt;")
 }
 
+// Single-pass tokenizer so we never re-scan already-injected markup.
+const TOKEN =
+  /(--.*$)|('[^']*')|\b(BIGSERIAL|SERIAL|BIGINT|INTEGER|INT|VARCHAR|TEXT|TIMESTAMPTZ|TIMESTAMP|BOOLEAN|NUMERIC|DECIMAL|DATE|UUID|JSONB|JSON)\b|\b(CREATE|TABLE|TRIGGER|INDEX|PRIMARY|KEY|FOREIGN|REFERENCES|NOT|NULL|DEFAULT|UNIQUE|CHECK|AFTER|BEFORE|INSERT|UPDATE|DELETE|ON|FOR|EACH|ROW|EXECUTE|FUNCTION|OR|AND|SELECT|FROM|WHERE|JOIN|CONSTRAINT|ALTER|ADD)\b|(\d+)/gi
+
 function highlight(code: string) {
-  // Order matters: comments and strings first via placeholder-free approach.
-  const lines = code.split("\n")
-  return lines
+  return code
+    .split("\n")
     .map((line) => {
-      const commentIdx = line.indexOf("--")
-      let codePart = line
-      let commentPart = ""
-      if (commentIdx >= 0) {
-        codePart = line.slice(0, commentIdx)
-        commentPart = line.slice(commentIdx)
+      let html = ""
+      let lastIndex = 0
+      const re = new RegExp(TOKEN.source, "gi")
+      let m: RegExpExecArray | null
+      while ((m = re.exec(line)) !== null) {
+        html += escapeHtml(line.slice(lastIndex, m.index))
+        const [match, comment, str, type, keyword, num] = m
+        if (comment) {
+          html += `<span class="text-muted-foreground italic">${escapeHtml(comment)}</span>`
+        } else if (str) {
+          html += `<span class="text-chart-3">${escapeHtml(str)}</span>`
+        } else if (type) {
+          html += `<span class="text-chart-2">${escapeHtml(type)}</span>`
+        } else if (keyword) {
+          html += `<span class="text-primary font-medium">${escapeHtml(keyword)}</span>`
+        } else if (num) {
+          html += `<span class="text-chart-4">${escapeHtml(num)}</span>`
+        } else {
+          html += escapeHtml(match)
+        }
+        lastIndex = m.index + match.length
       }
-      let html = escapeHtml(codePart)
-      html = html.replace(
-        /('[^']*')/g,
-        '<span class="text-chart-3">$1</span>',
-      )
-      html = html.replace(TYPES, '<span class="text-chart-2">$&</span>')
-      html = html.replace(
-        KEYWORDS,
-        '<span class="text-primary font-medium">$&</span>',
-      )
-      html = html.replace(/\b(\d+)\b/g, '<span class="text-chart-4">$1</span>')
-      if (commentPart) {
-        html += `<span class="text-muted-foreground italic">${escapeHtml(commentPart)}</span>`
-      }
+      html += escapeHtml(line.slice(lastIndex))
       return html || "&nbsp;"
     })
     .join("\n")
