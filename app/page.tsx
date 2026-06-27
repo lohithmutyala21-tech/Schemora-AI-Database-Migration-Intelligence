@@ -1,16 +1,23 @@
-export default function Home() {
+import { SiteNav } from "@/components/site-nav"
+import { SiteFooter } from "@/components/site-footer"
+import { Hero } from "@/components/landing/hero"
+import { Stats } from "@/components/landing/stats"
+import { Features } from "@/components/landing/features"
+import { Architecture } from "@/components/landing/architecture"
+import { CTA } from "@/components/landing/cta"
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-16 text-center sm:items-start sm:text-left">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Migris
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            To get started, send a prompt or modify this page directly.
-          </p>
-        </div>
+    <div className="flex min-h-screen flex-col">
+      <SiteNav />
+      <main className="flex-1">
+        <Hero />
+        <Stats />
+        <Features />
+        <Architecture />
+        <CTA />
       </main>
+      <SiteFooter />
     </div>
-  );
+  )
 }
