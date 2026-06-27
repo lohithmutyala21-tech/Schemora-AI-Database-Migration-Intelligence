@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter, Geist_Mono } from 'next/font/google'
+import { RouteTransition } from '@/components/route-transition'
 import './globals.css'
 
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
@@ -37,6 +38,7 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased">
         {children}
+        <RouteTransition />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

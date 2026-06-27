@@ -168,3 +168,117 @@
     @apply font-sans;
   }
 }
+
+/* Route transition animations */
+@keyframes schemora-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes schemora-overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes schemora-logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes schemora-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes schemora-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 oklch(0.62 0.19 253 / 0));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 22px oklch(0.62 0.19 253 / 0.55));
+  }
+}
+
+@keyframes schemora-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes schemora-dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.schemora-overlay-in {
+  animation: schemora-overlay-in 0.25s ease forwards;
+}
+.schemora-overlay-out {
+  animation: schemora-overlay-out 0.35s ease forwards;
+}
+.schemora-logo-in {
+  animation: schemora-logo-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.schemora-pulse {
+  animation: schemora-pulse 1.8s ease-in-out infinite;
+}
+.schemora-glow {
+  animation: schemora-glow 2.4s ease-in-out infinite;
+}
+.schemora-brand-in {
+  opacity: 0;
+  animation: schemora-fade-up 0.5s ease forwards;
+  animation-delay: 0.18s;
+}
+.schemora-status-in {
+  opacity: 0;
+  animation: schemora-fade-up 0.5s ease forwards;
+  animation-delay: 0.34s;
+}
+.schemora-dash {
+  stroke-dasharray: 6 10;
+  animation: schemora-dash 1.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .schemora-overlay-in,
+  .schemora-overlay-out,
+  .schemora-logo-in,
+  .schemora-pulse,
+  .schemora-glow,
+  .schemora-brand-in,
+  .schemora-status-in,
+  .schemora-dash {
+    animation: none !important;
+  }
+}
