@@ -58,7 +58,7 @@ export function Workspace() {
           Bring your SQL schema
         </h1>
         <p className="max-w-2xl text-muted-foreground">
-          Paste DDL, upload a .sql file, or load the sample. SchemaShift parses
+          Paste DDL, upload a .sql file, or load the sample. Schemora parses
           structure in real time before running the full analysis.
         </p>
       </div>

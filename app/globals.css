@@ -48,7 +48,7 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* SchemaShift AI dark theme */
+/* Schemora dark theme */
 :root {
   color-scheme: dark;
   --background: oklch(0.17 0.02 257);

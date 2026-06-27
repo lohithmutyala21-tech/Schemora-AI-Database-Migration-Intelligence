@@ -33,8 +33,8 @@ export function Features() {
             Everything you need to make the migration call
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
-            From raw DDL to a defensible recommendation, SchemaShift AI turns
-            schema complexity into clear, structured intelligence.
+            From raw DDL to a defensible recommendation, Schemora turns schema
+            complexity into clear, structured intelligence.
           </p>
         </div>
 

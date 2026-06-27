@@ -10,26 +10,13 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'SchemaShift AI — Database Migration Intelligence',
+  title: 'Schemora — AI Database Migration Intelligence',
   description:
-    'Upload your SQL schema and receive structured migration intelligence powered by schema parsing, compatibility scoring, and AI reasoning across Aurora DSQL and DynamoDB.',
+    'Upload your SQL schema and receive intelligent migration recommendations for modern AWS database architectures, powered by schema parsing, compatibility scoring, and AI reasoning.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/schemora-logo.png',
+    apple: '/schemora-logo.png',
   },
 }
 

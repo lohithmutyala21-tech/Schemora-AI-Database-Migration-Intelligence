@@ -13,16 +13,16 @@ export function Hero() {
         <div className="flex flex-col items-start">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground">
             <Sparkles className="h-3.5 w-3.5 text-primary" />
-            AI-powered migration intelligence
+            AI Database Migration Intelligence
           </div>
 
           <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            Know exactly where your database belongs
+            Know exactly where your database belongs.
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty">
-            Upload your SQL schema and receive structured migration intelligence
-            powered by schema parsing, compatibility scoring, and AI reasoning.
+            Upload your SQL schema and receive intelligent migration
+            recommendations for modern AWS database architectures.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Database } from "lucide-react"
+import Image from "next/image"
 
 export function SiteFooter() {
   return (
@@ -7,11 +7,15 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-12 md:flex-row md:items-start md:justify-between">
         <div className="max-w-xs">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <Database className="h-4.5 w-4.5" />
-            </span>
+            <Image
+              src="/schemora-logo.png"
+              alt="Schemora logo"
+              width={32}
+              height={32}
+              className="h-8 w-8 rounded-lg object-contain"
+            />
             <span className="text-sm font-semibold tracking-tight">
-              SchemaShift<span className="text-primary"> AI</span>
+              Schem<span className="text-primary">ora</span>
             </span>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -49,7 +53,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 SchemaShift AI. All rights reserved.</p>
+          <p>© 2026 Schemora. All rights reserved.</p>
           <p>Frontend on Vercel · Backend on Next.js · Aurora PostgreSQL</p>
         </div>
       </div>

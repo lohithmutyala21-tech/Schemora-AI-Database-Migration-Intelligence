@@ -1,4 +1,4 @@
-// Centralized placeholder data + scoring helpers for SchemaShift AI.
+// Centralized placeholder data + scoring helpers for Schemora.
 // This mirrors the shape the future Aurora PostgreSQL backend will return.
 
 export const SAMPLE_SCHEMA = `-- E-commerce order management schema

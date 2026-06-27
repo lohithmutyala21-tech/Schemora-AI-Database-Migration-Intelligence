@@ -1,4 +1,4 @@
--- SchemaShift AI — Aurora PostgreSQL schema
+-- Schemora — Aurora PostgreSQL schema
 -- Run this against your Aurora PostgreSQL cluster to provision persistence.
 
 CREATE TABLE IF NOT EXISTS projects (
