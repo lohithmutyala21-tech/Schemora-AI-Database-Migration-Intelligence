@@ -35,10 +35,25 @@ export function Workspace() {
     reader.readAsText(file)
   }
 
-  function analyse() {
-    setAnalysing(true)
-    setTimeout(() => router.push("/dashboard"), 1100)
+  async function analyse() {
+  setAnalysing(true)
+  try {
+    const res = await fetch("/api/analyse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sql, projectName: "My Project" }),
+    })
+    const data = await res.json()
+    if (!res.ok) throw new Error(data.error || "Analysis failed")
+    localStorage.setItem("schemora_result", JSON.stringify(data))
+    router.push("/dashboard")
+  } catch (e) {
+    console.error(e)
+    router.push("/dashboard")
+  } finally {
+    setAnalysing(false)
   }
+}
 
   const stats = [
     { icon: Table2, label: "Tables detected", value: detected.tables },
