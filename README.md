@@ -1,3 +1,98 @@
+<img width="1320" height="731" alt="Screenshot 2026-06-29 212542" src="https://github.com/user-attachments/assets/7337876c-621f-4df6-a193-022eea8ade7b" />🚀 Schemora
+
+Your Database. Your Control.
+A self-managed, secure, and scalable database control platform for modern teams.
+<img width="1320" height="731" alt="Screenshot 2026-06-29 212542" src="https://github.com/user-attachments/assets/13dcf28f-2802-42b5-8b7d-6916659c6e11" />
+
+📌 Overview
+
+Schemora is a self-hosted database management and control system designed to give developers and organizations full ownership of their data infrastructure. Instead of relying on fully managed cloud database dashboards, Schemora brings control, visibility, and flexibility into one unified platform.
+
+It allows teams to manage databases, users, roles, permissions, and system activity from a single intuitive dashboard — making database operations simpler, faster, and more secure.
+
+Built for hackathons, startups, and production-grade systems, Schemora focuses on security-first architecture + developer-friendly experience.
+
+✨ Key Features
+🧠 Centralized Database Control Panel
+Manage all databases from one unified dashboard.
+👥 Role-Based Access Control (RBAC)
+Assign, update, and manage permissions dynamically.
+🔐 Secure Authentication System
+Protect sensitive data with structured access control layers.
+📊 Real-Time Monitoring Dashboard
+Track queries, database health, user activity, and system status.
+⚙️ Admin-Level User Management
+Add/remove users instantly as teams evolve.
+🧾 Activity Logs & Audit Trail
+Full visibility into system changes and operations.
+🚀 Scalable Architecture
+Designed to support growing teams and expanding data loads.
+🧰 Tech Stack
+
+Frontend
+
+React.js / Next.js
+Tailwind CSS
+ShadCN UI (or custom UI components)
+
+Backend
+
+Node.js
+Express.js
+
+Database
+
+PostgreSQL / MySQL (self-managed schema layer)
+Prisma ORM (optional depending on implementation)
+
+Authentication & Security
+
+JWT (JSON Web Tokens)
+bcrypt for password hashing
+Role-based middleware system
+
+DevOps / Deployment
+
+Docker (containerized deployment)
+Vercel / AWS / Render (hosting options)
+Environment-based configuration (.env)
+🏗️ System Architecture
+
+Schemora follows a modular architecture:
+
+Frontend Dashboard → User interaction & control panel
+API Layer → Handles authentication, RBAC, and database operations
+Database Layer → Stores users, roles, logs, and schema data
+Security Middleware → Ensures access validation on every request
+🎯 Problem It Solves
+
+Modern database tools are either:
+
+Too complex for small teams
+Or too abstracted (no real control)
+
+Schemora solves this by offering:
+
+Full control without complexity
+Transparent database operations
+Easy admin-level management
+Secure multi-user environment
+💡 Future Enhancements
+AI-powered query assistant
+Multi-database support (MongoDB, PostgreSQL, MySQL)
+Advanced analytics dashboard
+Plugin system for custom workflows
+Cloud + self-host hybrid mode
+🏆 Why Judges Will Like It
+Real-world infrastructure problem solved
+Strong security + system design focus
+Practical for startups & enterprises
+Clear scalability path
+Clean UI + developer-first experience
+📎 Tagline
+
+Schemora — Your Database. Your Control. Fully Managed by You.
+
 # Schemora-AI-Database-Migration-Intelligence
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
