@@ -38,7 +38,7 @@ export function Workspace() {
   async function analyse() {
   setAnalysing(true)
   try {
-    const res = await fetch("/api/analyse", {
+    const res = await fetch("/api/analyze", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ sql, projectName: "My Project" }),
