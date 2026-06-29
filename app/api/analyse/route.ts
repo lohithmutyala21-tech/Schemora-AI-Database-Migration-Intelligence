@@ -66,6 +66,33 @@ function clamp(value: number): number {
   return Math.max(0, Math.min(100, Math.round(value)))
 }
 
+// Human-readable explanation of why a database was recommended.
+function buildReasoning(params: {
+  counts: Counts
+  recommendation: string
+  dsqlFit: number
+  dynamoFit: number
+}): string {
+  const { counts, recommendation, dsqlFit, dynamoFit } = params
+  const { table_count, foreign_key_count, trigger_count } = counts
+  const coupling =
+    foreign_key_count >= 4
+      ? "highly relational"
+      : foreign_key_count > 0
+        ? "moderately relational"
+        : "loosely coupled"
+
+  if (recommendation === "Aurora DSQL") {
+    const triggerNote =
+      trigger_count > 0
+        ? ` plus ${trigger_count} trigger${trigger_count === 1 ? "" : "s"} that require server-side logic`
+        : ""
+    return `This schema is a ${coupling}, ${trigger_count > 0 ? "transaction-heavy" : "structured"} workload spanning ${table_count} table${table_count === 1 ? "" : "s"} with ${foreign_key_count} foreign key${foreign_key_count === 1 ? "" : "s"}${triggerNote}. Aurora DSQL scored ${dsqlFit}% versus DynamoDB's ${dynamoFit}% because its relational integrity and distributed SQL transaction guarantees preserve the foreign-key graph and atomic multi-row writes that a key-value model cannot express natively.`
+  }
+
+  return `This schema is ${coupling} with ${table_count} table${table_count === 1 ? "" : "s"} and only ${foreign_key_count} foreign key${foreign_key_count === 1 ? "" : "s"}, making its access patterns a strong fit for a key-value model. DynamoDB scored ${dynamoFit}% versus Aurora DSQL's ${dsqlFit}% thanks to single-digit-millisecond reads and elastic horizontal scale, with minimal relational coupling to migrate.`
+}
+
 export async function POST(request: Request) {
   let body: any
   try {
