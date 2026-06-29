@@ -1,4 +1,4 @@
-<img width="1320" height="731" alt="Screenshot 2026-06-29 212542" src="https://github.com/user-attachments/assets/7337876c-621f-4df6-a193-022eea8ade7b" />🚀 Schemora
+🚀 Schemora
 
 Your Database. Your Control.
 A self-managed, secure, and scalable database control platform for modern teams.
