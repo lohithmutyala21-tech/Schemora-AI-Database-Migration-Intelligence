@@ -76,3 +76,19 @@ export async function query<T = Record<string, unknown>>(
   const result = await client.query(text, params)
   return result.rows as T[]
 }
+
+/**
+ * Default DATABASE_URL-based pool.
+ *
+ * This mirrors `lib/db.js` so that `import pool from "@/lib/db.js"` resolves to
+ * an identical `pg` Pool for both TypeScript (which resolves the specifier to
+ * this file) and the bundler (which resolves it to `lib/db.js` at runtime).
+ * Use this for routes that connect with a standard connection string instead of
+ * IAM auth.
+ */
+const defaultPool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+})
+
+export default defaultPool
