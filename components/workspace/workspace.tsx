@@ -41,7 +41,7 @@ export function Workspace() {
     const res = await fetch("/api/analyze", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sql, projectName: "My Project" }),
+      body: JSON.stringify({ sql, name: "My Project" }),
     })
     const data = await res.json()
     if (!res.ok) throw new Error(data.error || "Analysis failed")
